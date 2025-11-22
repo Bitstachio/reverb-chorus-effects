@@ -1,0 +1,59 @@
+# JUCE auto-generated folders
+/JuceLibraryCode/
+/Builds/
+
+# Local build outputs
+/build/
+/bin/
+/out/
+/builds/
+/cmake-build-*/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# IDE / Editor metadata
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Xcode
+*.xcworkspace
+*.xcuserstate
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj  # optional: keep this if you want minimal Xcode tracking
+
+# Visual Studio
+*.VC.db
+*.VC.opendb
+*.ipch
+*.obj
+*.pdb
+*.idb
+*.res
+*.sdf
+*.tlog
+*.log
+*.vcxproj*
+*.filters
+*.sln
+
+# Other build artifacts
+*.dll
+*.exe
+*.app
+*.so
+*.dylib
+*.a
+*.lib
+*.o
+
+# CMake cache and build files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
