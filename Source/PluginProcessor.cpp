@@ -127,6 +127,20 @@ void A3AudioProcessor::updateFX() {
     phaserProcessor.setDepth(phaserDepth);
 }
 
+void A3AudioProcessor::updateReverb() {
+    bypassReverb = apvts.getRawParameterValue("REVERB_BYPASS")->load();
+
+    juce::dsp::Reverb::Parameters params;
+    params.roomSize   = apvts.getRawParameterValue("ROOM_SIZE")->load() / 100;
+    params.damping    = apvts.getRawParameterValue("DAMPING")->load() / 100;
+    params.width      = apvts.getRawParameterValue("WIDTH")->load() / 100;
+    params.wetLevel   = apvts.getRawParameterValue("WET_LEVEL")->load() / 100;
+    params.dryLevel   = apvts.getRawParameterValue("DRY_LEVEL")->load() / 100;
+    params.freezeMode = (*apvts.getRawParameterValue("FREEZE_MODE") > 0.5f);
+
+    reverb.setParameters(params);
+}
+
 void A3AudioProcessor::releaseResources() {
     // When playback stops, you can use this as an opportunity to free up any
     // spare memory, etc.
@@ -163,6 +177,8 @@ void A3AudioProcessor::processBlock(juce::AudioBuffer<float> &buffer, juce::Midi
         buffer.clear(i, 0, buffer.getNumSamples());
 
     updateFX();
+    updateReverb();
+
     juce::dsp::AudioBlock<float>              block(buffer);
     juce::dsp::ProcessContextReplacing<float> context(block);
 
@@ -170,6 +186,8 @@ void A3AudioProcessor::processBlock(juce::AudioBuffer<float> &buffer, juce::Midi
         stateVariableFilter.process(context);
     if (!bypassPhaser)
         fxChain.process(context);
+    if (!bypassReverb)
+        reverb.process(context);
 }
 
 //==============================================================================

@@ -66,6 +66,12 @@ private:
     juce::dsp::ProcessorChain<juce::dsp::Phaser<float>, juce::dsp::Gain<float>> fxChain;
     bool                                                                        bypassPhaser = false;
 
+    //===== Reverb =====
+
+    juce::dsp::Reverb reverb;
+    void              updateReverb();
+    bool              bypassReverb = false;
+
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(A3AudioProcessor)
 };
