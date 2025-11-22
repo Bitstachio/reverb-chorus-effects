@@ -68,6 +68,10 @@ private:
 
     //===== Reverb Parameters =====
 
+    // Bypass Flag
+    juce::TextButton                                                      reverbBypassToggle;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment> reverbBypassAttachment;
+
     // Room Size
     juce::Label                                                           reverbRoomSizeLabel;
     juce::Label                                                           reverbRoomSizeUnitLabel;
@@ -103,6 +107,10 @@ private:
     std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment> reverbFreezeModeAttachment;
 
     //===== Chorus Parameters =====
+
+    // Bypass Flag
+    juce::TextButton                                                      chorusBypassToggle;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment> chorusBypassAttachment;
 
     // Rate
     juce::Label                                                           chorusRateLabel;

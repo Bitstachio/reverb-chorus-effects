@@ -1,6 +1,8 @@
 #pragma once
 
 struct ChorusParams {
+    inline static constexpr bool CHORUS_BYPASS_DEFAULT = false;
+
     inline static constexpr float RATE_DEFAULT = 1.0f;
     inline static constexpr float RATE_MIN     = 0.0f;
     inline static constexpr float RATE_MAX     = 5.0f;

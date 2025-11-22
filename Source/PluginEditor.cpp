@@ -118,6 +118,8 @@ A3AudioProcessorEditor::A3AudioProcessorEditor(A3AudioProcessor &p) : AudioProce
         audioProcessor.apvts, "PHASERMENU", phaserMenu);
 
     // Reverb parameters
+    initToggleButton(reverbBypassToggle, reverbBypassAttachment, "REVERB_BYPASS", "Reverb Bypass", palette.buttonOff,
+                     palette.buttonOn, palette.text);
     initSlider(*this, reverbRoomSizeLabel, reverbRoomSizeUnitLabel, reverbRoomSizeSlider, reverbRoomSizeAttachment,
                audioProcessor.apvts, "ROOM_SIZE", "Room Size", "[ % ]", ReverbParams::ROOM_SIZE_MIN,
                ReverbParams::ROOM_SIZE_MAX, ReverbParams::ROOM_SIZE_STEP, palette);
@@ -137,6 +139,8 @@ A3AudioProcessorEditor::A3AudioProcessorEditor(A3AudioProcessor &p) : AudioProce
                      palette.buttonOff, palette.buttonOn, palette.text);
 
     // Chorus parameters
+    initToggleButton(chorusBypassToggle, chorusBypassAttachment, "CHORUS_BYPASS", "Chorus Bypass", palette.buttonOff,
+                     palette.buttonOn, palette.text);
     initSlider(*this, chorusRateLabel, chorusRateUnitLabel, chorusRateSlider, chorusRateAttachment,
                audioProcessor.apvts, "RATE", "Rate", "[ Hz ]", ChorusParams::RATE_MIN, ChorusParams::RATE_MAX,
                ChorusParams::RATE_STEP, palette);

@@ -210,6 +210,8 @@ juce::AudioProcessorValueTreeState::ParameterLayout A3AudioProcessor::createPara
     layout.add(std::make_unique<juce::AudioParameterInt>("PHASERMENU", "Phaser Menu", 1, 2, 2));
 
     // Reverb parameters
+    layout.add(std::make_unique<juce::AudioParameterBool>("REVERB_BYPASS", "Reverb Bypass",
+                                                          ReverbParams::REVERB_BYPASS_DEFAULT));
     layout.add(std::make_unique<juce::AudioParameterFloat>("ROOM_SIZE", "Room Size", ReverbParams::ROOM_SIZE_MIN,
                                                            ReverbParams::ROOM_SIZE_MAX,
                                                            ReverbParams::ROOM_SIZE_DEFAULT));
@@ -230,6 +232,8 @@ juce::AudioProcessorValueTreeState::ParameterLayout A3AudioProcessor::createPara
         std::make_unique<juce::AudioParameterBool>("FREEZE_MODE", "Freeze Mode", ReverbParams::FREEZE_MODE_DEFAULT));
 
     // Chorus parameters
+    layout.add(std::make_unique<juce::AudioParameterBool>("CHORUS_BYPASS", "Chorus Bypass",
+                                                          ChorusParams::CHORUS_BYPASS_DEFAULT));
     layout.add(std::make_unique<juce::AudioParameterFloat>("RATE", "Rate", ChorusParams::RATE_MIN,
                                                            ChorusParams::RATE_MAX, ChorusParams::RATE_DEFAULT));
 

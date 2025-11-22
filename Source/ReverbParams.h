@@ -1,6 +1,8 @@
 #pragma once
 
 struct ReverbParams {
+    inline static constexpr bool REVERB_BYPASS_DEFAULT = false;
+
     inline static constexpr float ROOM_SIZE_DEFAULT = 0.5f;
     inline static constexpr float ROOM_SIZE_MIN     = 0.0f;
     inline static constexpr float ROOM_SIZE_MAX     = 1.0f;
