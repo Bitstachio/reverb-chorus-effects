@@ -9,6 +9,9 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
+#include "ReverbParams.h"
+#include "ChorusParams.h"
+
 //==============================================================================
 A3AudioProcessor::A3AudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
@@ -205,6 +208,43 @@ juce::AudioProcessorValueTreeState::ParameterLayout A3AudioProcessor::createPara
     layout.add(std::make_unique<juce::AudioParameterFloat>("GAIN", "Gain", 0.0f, 2.0f, 1.0f));
     layout.add(std::make_unique<juce::AudioParameterInt>("FILTERMENU", "Filter Menu", 1, 4, 4));
     layout.add(std::make_unique<juce::AudioParameterInt>("PHASERMENU", "Phaser Menu", 1, 2, 2));
+
+    // Reverb parameters
+    layout.add(std::make_unique<juce::AudioParameterFloat>("ROOM_SIZE", "Room Size", ReverbParams::ROOM_SIZE_MIN,
+                                                           ReverbParams::ROOM_SIZE_MAX,
+                                                           ReverbParams::ROOM_SIZE_DEFAULT));
+
+    layout.add(std::make_unique<juce::AudioParameterFloat>("DAMPING", "Damping", ReverbParams::DAMPING_MIN,
+                                                           ReverbParams::DAMPING_MAX, ReverbParams::DAMPING_DEFAULT));
+
+    layout.add(std::make_unique<juce::AudioParameterFloat>("WIDTH", "Width", ReverbParams::WIDTH_MIN,
+                                                           ReverbParams::WIDTH_MAX, ReverbParams::WIDTH_DEFAULT));
+
+    layout.add(std::make_unique<juce::AudioParameterFloat>("WET_LEVEL", "Wet Level", ReverbParams::WET_MIN,
+                                                           ReverbParams::WET_MAX, ReverbParams::WET_DEFAULT));
+
+    layout.add(std::make_unique<juce::AudioParameterFloat>("DRY_LEVEL", "Dry Level", ReverbParams::DRY_MIN,
+                                                           ReverbParams::DRY_MAX, ReverbParams::DRY_DEFAULT));
+
+    layout.add(
+        std::make_unique<juce::AudioParameterBool>("FREEZE_MODE", "Freeze Mode", ReverbParams::FREEZE_MODE_DEFAULT));
+
+    // Chorus parameters
+    layout.add(std::make_unique<juce::AudioParameterFloat>("RATE", "Rate", ChorusParams::RATE_MIN,
+                                                           ChorusParams::RATE_MAX, ChorusParams::RATE_DEFAULT));
+
+    layout.add(std::make_unique<juce::AudioParameterFloat>("DEPTH", "Depth", ChorusParams::DEPTH_MIN,
+                                                           ChorusParams::DEPTH_MAX, ChorusParams::DEPTH_DEFAULT));
+
+    layout.add(std::make_unique<juce::AudioParameterFloat>(
+        "CENTRE_DELAY", "Centre Delay", ChorusParams::CENTRE_DELAY_MIN, ChorusParams::CENTRE_DELAY_MAX,
+        ChorusParams::CENTRE_DELAY_DEFAULT));
+
+    layout.add(std::make_unique<juce::AudioParameterFloat>("FEEDBACK", "Feedback", ChorusParams::FEEDBACK_MIN,
+                                                           ChorusParams::FEEDBACK_MAX, ChorusParams::FEEDBACK_DEFAULT));
+
+    layout.add(std::make_unique<juce::AudioParameterFloat>("MIX", "Mix", ChorusParams::MIX_MIN, ChorusParams::MIX_MAX,
+                                                           ChorusParams::MIX_DEFAULT));
 
     return layout;
 }
