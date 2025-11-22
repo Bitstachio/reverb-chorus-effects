@@ -70,7 +70,7 @@ void A3AudioProcessorEditor::initToggleButton(
 
 //==============================================================================
 A3AudioProcessorEditor::A3AudioProcessorEditor(A3AudioProcessor &p) : AudioProcessorEditor(&p), audioProcessor(p) {
-    setSize(400, 200);
+    setSize(1200, 600);
 
     filterMenu.setJustificationType(juce::Justification::centred);
     filterMenu.addItem("Filter: Low Pass", 1);
@@ -162,33 +162,18 @@ A3AudioProcessorEditor::~A3AudioProcessorEditor() {}
 
 //==============================================================================
 void A3AudioProcessorEditor::paint(juce::Graphics &g) {
-    getLookAndFeel().setColour(juce::Slider::thumbColourId, juce::Colours::greenyellow);
-    juce::Rectangle<int> area      = getLocalBounds().reduced(5);
-    juce::Rectangle<int> titleArea = area.removeFromTop(20);
-    // int width = area.getWidth();
-    g.fillAll(juce::Colours::grey);
-    g.setColour(juce::Colours::white);
-    g.drawText("A3 Starter", titleArea, juce::Justification::centredTop);
-
-    juce::Rectangle<int> innerArea = getLocalBounds().reduced(25); //(25, 25, 350, 150);
-    g.setColour(juce::Colours::yellowgreen);
-    g.drawRect(innerArea, 1.0f);
-
-    int innerWidth = innerArea.getWidth();
-    g.drawText("Cutoff", innerArea.getX(), 80, innerWidth / 4, 25, juce::Justification::centred);
-    g.drawText("Rate", innerArea.getX() + innerWidth / 4, 80, innerWidth / 4, 25, juce::Justification::centred);
-    g.drawText("Depth", innerArea.getX() + innerWidth / 2, 80, innerWidth / 4, 25, juce::Justification::centred);
-    g.drawText("Gain", innerArea.getX() + 3 * innerWidth / 4, 80, innerWidth / 4, 25, juce::Justification::centred);
+    g.fillAll(palette.background);
+    g.setColour(palette.text);
+    g.setFont(24.0f);
+    g.drawFittedText("Reverb & Chorus Effects Plugin", 0, 10, getWidth(), 30, juce::Justification::centred, 1);
 }
 
 void A3AudioProcessorEditor::resized() {
-    juce::Rectangle<int> area  = getLocalBounds().reduced(40);
-    juce::Rectangle<int> menus = area.removeFromTop(20);
-    int                  width = menus.getWidth();
-    filterMenu.setBounds(menus.removeFromLeft(width / 2 - 5));
-    phaserMenu.setBounds(menus.removeFromRight(width / 2 - 5));
-    cutOffSlider.setBounds(35, 90, width / 4 - 10, area.getHeight() - 10);
-    rateSlider.setBounds(120, 90, width / 4 - 10, area.getHeight() - 10);
-    depthSlider.setBounds(209, 90, width / 4 - 10, area.getHeight() - 10);
-    gainSlider.setBounds(295, 90, width / 4 - 10, area.getHeight() - 10);
+    filterMenu.setBounds(30, 60, 155, 20);
+    phaserMenu.setBounds(195, 60, 155, 20);
+
+    cutOffSlider.setBounds(35, 90, 70, 150);
+    rateSlider.setBounds(120, 90, 70, 150);
+    depthSlider.setBounds(209, 90, 70, 150);
+    gainSlider.setBounds(295, 90, 70, 150);
 }
