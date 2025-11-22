@@ -176,4 +176,28 @@ void A3AudioProcessorEditor::resized() {
     rateSlider.setBounds(120, 90, 70, 150);
     depthSlider.setBounds(209, 90, 70, 150);
     gainSlider.setBounds(295, 90, 70, 150);
+
+    //----- Reverb Parameters -----
+
+    reverbRoomSizeLabel.setBounds(600, 60, 250, 30);
+    reverbRoomSizeSlider.setBounds(600, 90, 250, 20);
+    reverbRoomSizeUnitLabel.setBounds(860, 90, 40, 20);
+
+    reverbDampingLabel.setBounds(600, 120, 250, 30);
+    reverbDampingSlider.setBounds(600, 150, 250, 20);
+    reverbDampingUnitLabel.setBounds(860, 150, 40, 20);
+
+    reverbWidthLabel.setBounds(600, 180, 250, 30);
+    reverbWidthSlider.setBounds(600, 210, 250, 20);
+    reverbWidthUnitLabel.setBounds(860, 210, 40, 20);
+
+    reverbWetLevelLabel.setBounds(600, 240, 250, 30);
+    reverbWetLevelSlider.setBounds(600, 270, 250, 20);
+    reverbWetLevelUnitLabel.setBounds(860, 270, 40, 20);
+
+    reverbDryLevelLabel.setBounds(600, 300, 250, 30);
+    reverbDryLevelSlider.setBounds(600, 330, 250, 20);
+    reverbDryLevelUnitLabel.setBounds(860, 330, 40, 20);
+
+    reverbBypassToggle.setBounds(600, 380, 140, 60);
 }

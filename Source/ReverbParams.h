@@ -3,30 +3,30 @@
 struct ReverbParams {
     inline static constexpr bool REVERB_BYPASS_DEFAULT = false;
 
-    inline static constexpr float ROOM_SIZE_DEFAULT = 0.5f;
-    inline static constexpr float ROOM_SIZE_MIN     = 0.0f;
-    inline static constexpr float ROOM_SIZE_MAX     = 1.0f;
-    inline static constexpr float ROOM_SIZE_STEP    = 0.01f;
+    inline static constexpr int ROOM_SIZE_DEFAULT = 50;
+    inline static constexpr int ROOM_SIZE_MIN     = 0;
+    inline static constexpr int ROOM_SIZE_MAX     = 100;
+    inline static constexpr int ROOM_SIZE_STEP    = 1;
 
-    inline static constexpr float DAMPING_DEFAULT = 0.5f;
-    inline static constexpr float DAMPING_MIN     = 0.0f;
-    inline static constexpr float DAMPING_MAX     = 1.0f;
-    inline static constexpr float DAMPING_STEP    = 0.01f;
+    inline static constexpr int DAMPING_DEFAULT = 50;
+    inline static constexpr int DAMPING_MIN     = 0;
+    inline static constexpr int DAMPING_MAX     = 100;
+    inline static constexpr int DAMPING_STEP    = 1;
 
-    inline static constexpr float WIDTH_DEFAULT = 1.0f;
-    inline static constexpr float WIDTH_MIN     = 0.0f;
-    inline static constexpr float WIDTH_MAX     = 1.0f;
-    inline static constexpr float WIDTH_STEP    = 0.01f;
+    inline static constexpr int WIDTH_DEFAULT = 100;
+    inline static constexpr int WIDTH_MIN     = 0;
+    inline static constexpr int WIDTH_MAX     = 100;
+    inline static constexpr int WIDTH_STEP    = 1;
 
-    inline static constexpr float WET_DEFAULT = 0.5f;
-    inline static constexpr float WET_MIN     = 0.0f;
-    inline static constexpr float WET_MAX     = 1.0f;
-    inline static constexpr float WET_STEP    = 0.01f;
+    inline static constexpr int WET_DEFAULT = 50;
+    inline static constexpr int WET_MIN     = 0;
+    inline static constexpr int WET_MAX     = 100;
+    inline static constexpr int WET_STEP    = 1;
 
-    inline static constexpr float DRY_DEFAULT = 0.5f;
-    inline static constexpr float DRY_MIN     = 0.0f;
-    inline static constexpr float DRY_MAX     = 1.0f;
-    inline static constexpr float DRY_STEP    = 0.01f;
+    inline static constexpr int DRY_DEFAULT = 50;
+    inline static constexpr int DRY_MIN     = 0;
+    inline static constexpr int DRY_MAX     = 100;
+    inline static constexpr int DRY_STEP    = 1;
 
     inline static constexpr bool FREEZE_MODE_DEFAULT = false;
 

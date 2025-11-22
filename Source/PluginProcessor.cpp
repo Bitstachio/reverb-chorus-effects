@@ -131,12 +131,12 @@ void A3AudioProcessor::updateReverb() {
     bypassReverb = apvts.getRawParameterValue("REVERB_BYPASS")->load();
 
     juce::dsp::Reverb::Parameters params;
-    params.roomSize   = apvts.getRawParameterValue("ROOM_SIZE")->load() / 100;
-    params.damping    = apvts.getRawParameterValue("DAMPING")->load() / 100;
-    params.width      = apvts.getRawParameterValue("WIDTH")->load() / 100;
-    params.wetLevel   = apvts.getRawParameterValue("WET_LEVEL")->load() / 100;
-    params.dryLevel   = apvts.getRawParameterValue("DRY_LEVEL")->load() / 100;
-    params.freezeMode = (*apvts.getRawParameterValue("FREEZE_MODE") > 0.5f);
+    params.roomSize   = apvts.getRawParameterValue("ROOM_SIZE")->load() / 100.0f;
+    params.damping    = apvts.getRawParameterValue("DAMPING")->load() / 100.0f;
+    params.width      = apvts.getRawParameterValue("WIDTH")->load() / 100.0f;
+    params.wetLevel   = apvts.getRawParameterValue("WET_LEVEL")->load() / 100.0f;
+    params.dryLevel   = apvts.getRawParameterValue("DRY_LEVEL")->load() / 100.0f;
+    params.freezeMode = apvts.getRawParameterValue("FREEZE_MODE")->load();
 
     reverb.setParameters(params);
 }
@@ -230,21 +230,16 @@ juce::AudioProcessorValueTreeState::ParameterLayout A3AudioProcessor::createPara
     // Reverb parameters
     layout.add(std::make_unique<juce::AudioParameterBool>("REVERB_BYPASS", "Reverb Bypass",
                                                           ReverbParams::REVERB_BYPASS_DEFAULT));
-    layout.add(std::make_unique<juce::AudioParameterFloat>("ROOM_SIZE", "Room Size", ReverbParams::ROOM_SIZE_MIN,
-                                                           ReverbParams::ROOM_SIZE_MAX,
-                                                           ReverbParams::ROOM_SIZE_DEFAULT));
-
-    layout.add(std::make_unique<juce::AudioParameterFloat>("DAMPING", "Damping", ReverbParams::DAMPING_MIN,
-                                                           ReverbParams::DAMPING_MAX, ReverbParams::DAMPING_DEFAULT));
-
-    layout.add(std::make_unique<juce::AudioParameterFloat>("WIDTH", "Width", ReverbParams::WIDTH_MIN,
-                                                           ReverbParams::WIDTH_MAX, ReverbParams::WIDTH_DEFAULT));
-
-    layout.add(std::make_unique<juce::AudioParameterFloat>("WET_LEVEL", "Wet Level", ReverbParams::WET_MIN,
-                                                           ReverbParams::WET_MAX, ReverbParams::WET_DEFAULT));
-
-    layout.add(std::make_unique<juce::AudioParameterFloat>("DRY_LEVEL", "Dry Level", ReverbParams::DRY_MIN,
-                                                           ReverbParams::DRY_MAX, ReverbParams::DRY_DEFAULT));
+    layout.add(std::make_unique<juce::AudioParameterInt>("ROOM_SIZE", "Room Size", ReverbParams::ROOM_SIZE_MIN,
+                                                         ReverbParams::ROOM_SIZE_MAX, ReverbParams::ROOM_SIZE_DEFAULT));
+    layout.add(std::make_unique<juce::AudioParameterInt>("DAMPING", "Damping", ReverbParams::DAMPING_MIN,
+                                                         ReverbParams::DAMPING_MAX, ReverbParams::DAMPING_DEFAULT));
+    layout.add(std::make_unique<juce::AudioParameterInt>("WIDTH", "Width", ReverbParams::WIDTH_MIN,
+                                                         ReverbParams::WIDTH_MAX, ReverbParams::WIDTH_DEFAULT));
+    layout.add(std::make_unique<juce::AudioParameterInt>("WET_LEVEL", "Wet Level", ReverbParams::WET_MIN,
+                                                         ReverbParams::WET_MAX, ReverbParams::WET_DEFAULT));
+    layout.add(std::make_unique<juce::AudioParameterInt>("DRY_LEVEL", "Dry Level", ReverbParams::DRY_MIN,
+                                                         ReverbParams::DRY_MAX, ReverbParams::DRY_DEFAULT));
 
     layout.add(
         std::make_unique<juce::AudioParameterBool>("FREEZE_MODE", "Freeze Mode", ReverbParams::FREEZE_MODE_DEFAULT));
