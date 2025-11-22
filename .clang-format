@@ -1,0 +1,13 @@
+BasedOnStyle: LLVM
+IndentWidth: 4
+ColumnLimit: 120
+AccessModifierOffset: -4
+AllowShortFunctionsOnASingleLine: Inline
+AlignConsecutiveAssignments: true
+AlignConsecutiveDeclarations: true
+SortIncludes: false
+BreakBeforeBraces: Attach
+SpacesBeforeTrailingComments: 1
+IndentCaseLabels: true
+AllowShortIfStatementsOnASingleLine: false
+SpaceAfterCStyleCast: true
